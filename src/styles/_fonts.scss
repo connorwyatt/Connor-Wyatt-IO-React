@@ -1,0 +1,26 @@
+$fonts-base-location: './assets/fonts';
+
+$weights: (
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  heavy: 900
+);
+
+@each $weight-name, $weight-value in $weights {
+  @font-face {
+    font-family: Raleway;
+    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot');
+    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot?#iefix') format('embedded-opentype'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.woff') format('woff'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.ttf') format('truetype'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.svg#raleway#{$weight-name}') format('svg');
+    font-weight: $weight-value;
+    font-style: normal;
+  }
+}

@@ -29,6 +29,14 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.(eot|svg)$/,
+        loader: 'file-loader?name=[name].[hash:20].[ext]'
+      },
+      {
+        test: /\.(ttf|woff)$/,
+        loader: 'url-loader?name=[name].[hash:20].[ext]&limit=10000'
       }
     ]
   },
