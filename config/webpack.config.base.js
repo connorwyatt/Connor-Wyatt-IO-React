@@ -4,7 +4,7 @@ const path = require('path'),
 
 module.exports = {
   entry: {app: './src/bootstrap.jsx', vendor: './src/vendor.js'},
-  output: {path: path.resolve(__dirname, 'dist'), filename: '[name].[chunkhash].js'},
+  output: {path: path.resolve(__dirname, '..', 'dist'), filename: '[name].[chunkhash].js'},
   devServer: {
     https: true
   },
