@@ -1,1 +1,43 @@
+@import 'materialDesign';
+
+$color-black: #000;
 $color-white: #fff;
+
+$color-primary-name: 'cyan';
+$color-secondary-name: 'cyan';
+$color-success-name: 'green';
+$color-error-name: 'red';
+
+$color-primary: material-design-color($color-primary-name, '500');
+$color-primary-dark: material-design-color($color-primary-name, '700');
+$color-primary-light: material-design-color($color-primary-name, '300');
+
+$color-secondary: material-design-color($color-secondary-name, 'a200');
+$color-secondary-dark: material-design-color($color-secondary-name, 'a100');
+$color-secondary-light: material-design-color($color-secondary-name, 'a400');
+
+$color-success: material-design-color($color-success-name, '500');
+$color-success-dark: material-design-color($color-success-name, '700');
+$color-success-light: material-design-color($color-success-name, '300');
+
+$color-error: material-design-color($color-error-name, '500');
+$color-error-dark: material-design-color($color-error-name, '700');
+$color-error-light: material-design-color($color-error-name, '300');
+
+$color-grey: material-design-color('grey', '500');
+$color-grey-dark: material-design-color('grey', '800');
+$color-grey-light: material-design-color('grey', '100');
+
+$color-text: transparentize($color-black, .13);
+$color-secondary-text: transparentize($color-black, .46);
+$color-icons: $color-secondary-text;
+$color-disabled-text: transparentize($color-black, .62);
+$color-hint-text: $color-disabled-text;
+$color-dividers: transparentize($color-black, .88);
+
+$color-text-inverted: $color-white;
+$color-secondary-text-inverted: transparentize($color-white, .3);
+$color-icons-inverted: transparentize($color-white, .7);
+$color-disabled-text-inverted: $color-icons-inverted;
+$color-hint-text-inverted: $color-icons-inverted;
+$color-dividers-inverted: transparentize($color-white, .88);

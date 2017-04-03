@@ -4,4 +4,4 @@ import CwAppRoot from './components/CwAppRoot.jsx';
 
 import './styles.scss';
 
-ReactDOM.render(<CwAppRoot/>, document.querySelector('[react-app]'));
+ReactDOM.render(<CwAppRoot/>, document.querySelector('[app-root]'));

@@ -1,3 +1,4 @@
+@import 'colors';
 @import 'utilities';
 
 $fonts-base-location: './assets/fonts';
@@ -59,4 +60,69 @@ $line-height-overrides: ();
 @mixin inherit-typography() {
   font-size: inherit;
   line-height: inherit;
+}
+
+@mixin h1() {
+  @include typography('xxlarge');
+  color: $color-secondary-text;
+  font-weight: font-weight('light');
+
+  @media #{$mediaQuery-retina-display} {
+    font-weight: font-weight('extralight');
+  }
+}
+
+@mixin h2() {
+  @include typography('xlarge');
+  color: $color-secondary-text;
+  font-weight: font-weight('light');
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  @media #{$mediaQuery-retina-display} {
+    font-weight: font-weight('extralight');
+  }
+}
+
+@mixin h3() {
+  @include typography('large');
+  color: $color-secondary-text;
+  font-weight: font-weight('light');
+}
+
+@mixin h4() {
+  @include typography('regular');
+  color: $color-secondary-text;
+  font-weight: font-weight('light');
+}
+
+@mixin h5() {
+  @include typography('regular');
+  color: $color-secondary-text;
+  font-weight: font-weight('regular');
+}
+
+@mixin h6() {
+  @include typography('regular');
+  color: $color-secondary-text;
+  font-weight: font-weight('medium');
+}
+
+@mixin paragraph() {
+  @include typography('regular');
+  font-weight: font-weight('regular');
+  margin-bottom: $base-line-height;
+  text-align: justify;
+}
+
+@mixin inherit-font-colors() {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: inherit;
+  }
 }
