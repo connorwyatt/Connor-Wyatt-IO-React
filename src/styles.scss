@@ -1,6 +1,29 @@
 @import 'styles/normalize';
-@import 'styles/fonts';
+@import 'styles/theme';
+
+@each $weight-name, $weight-value in $weights {
+  @font-face {
+    font-family: Raleway;
+    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot');
+    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot?#iefix') format('embedded-opentype'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.woff') format('woff'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.ttf') format('truetype'),
+    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.svg#raleway#{$weight-name}') format('svg');
+    font-weight: $weight-value;
+    font-style: normal;
+  }
+}
 
 body {
   font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
 }

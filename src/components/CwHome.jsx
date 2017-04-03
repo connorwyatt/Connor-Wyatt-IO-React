@@ -1,9 +1,16 @@
 import React from 'react';
+import CwHeroImage from './CwHeroImage.jsx';
+
+import './CwHome.scss';
 
 const CwHome = () => (
   <div>
-    <p>Senior \ Web \ Application \ Developer</p>
-    <p>Nottingham, UK</p>
+    <div className="cw-home--hero-image">
+      <CwHeroImage src={'assets/images/mac.jpg'}>
+        <p className="cw-home--hero-image-title">Senior \ Web \ Application \ Developer</p>
+        <p className="cw-home--hero-image-subtitle">Nottingham, UK</p>
+      </CwHeroImage>
+    </div>
   </div>
 );
 

@@ -1,6 +1,7 @@
 const path = require('path'),
   webpack = require('webpack'),
-  HtmlWebpackPlugin = require('html-webpack-plugin');
+  HtmlWebpackPlugin = require('html-webpack-plugin'),
+  CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {app: './src/bootstrap.jsx', vendor: './src/vendor.js'},
@@ -48,6 +49,10 @@ module.exports = {
       template: './src/index.html',
       minify: {collapseWhitespace: true},
       inject: true
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: 'src/assets',
+      to: 'assets'
+    }])
   ]
 };

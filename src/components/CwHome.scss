@@ -1,0 +1,20 @@
+@import '../styles/theme';
+
+.cw-home {
+  $cmp: &;
+
+  &--hero-image {
+    color: $color-white;
+    height: 100vh;
+    letter-spacing: 2.5px;
+
+    &-title {
+      font-weight: font-weight('extralight');
+      font-size: font-size('xlarge');
+    }
+
+    &-subtitle {
+      font-weight: font-weight('regular');
+    }
+  }
+}

@@ -1,26 +1,62 @@
+@import 'utilities';
+
 $fonts-base-location: './assets/fonts';
 
 $weights: (
-  thin: 100,
-  extralight: 200,
-  light: 300,
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-  extrabold: 800,
-  heavy: 900
+        thin: 100,
+        extralight: 200,
+        light: 300,
+        regular: 400,
+        medium: 500,
+        semibold: 600,
+        bold: 700,
+        extrabold: 800,
+        heavy: 900
 );
 
-@each $weight-name, $weight-value in $weights {
-  @font-face {
-    font-family: Raleway;
-    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot');
-    src: url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.eot?#iefix') format('embedded-opentype'),
-    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.woff') format('woff'),
-    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.ttf') format('truetype'),
-    url('#{$fonts-base-location}/raleway/raleway-#{$weight-name}.svg#raleway#{$weight-name}') format('svg');
-    font-weight: $weight-value;
-    font-style: normal;
-  }
+$root-font-size-mobile: 16px;
+$root-font-size: 18px;
+
+$scale-factor: 1.25;
+
+$base-font-size: 1rem;
+$base-line-height: 1.5rem;
+$base-line-height-pixels-mobile: strip-unit($base-line-height) * strip-unit($root-font-size-mobile) * 1px;
+$base-line-height-pixels: strip-unit($base-line-height) * strip-unit($root-font-size) * 1px;
+
+$font-sizes: (
+        xsmall: $base-font-size * 1 / ($scale-factor * $scale-factor),
+        small: $base-font-size * 1 / $scale-factor,
+        regular: $base-font-size,
+        large: $base-font-size * $scale-factor,
+        xlarge: $base-font-size * $scale-factor * $scale-factor,
+        xxlarge: $base-font-size * $scale-factor * $scale-factor * $scale-factor
+);
+
+$line-height-overrides: ();
+
+@function font-weight($weight) {
+  @return map-get($weights, $weight);
+}
+
+@function font-size($size) {
+  @return map-get($font-sizes, $size);
+}
+
+@function line-height($size) {
+  $font-size: font-size($size);
+
+  $line-height: ceil($font-size / $base-line-height) * $base-line-height;
+
+  @return $line-height;
+}
+
+@mixin typography($size) {
+  font-size: font-size($size);
+  line-height: line-height($size);
+}
+
+@mixin inherit-typography() {
+  font-size: inherit;
+  line-height: inherit;
 }
