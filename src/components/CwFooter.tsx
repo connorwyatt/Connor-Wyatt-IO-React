@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 
-export default class CwFooter extends Component {
-  constructor(props) {
+interface IProps {}
+
+interface IState {
+  year: number;
+}
+
+export default class CwFooter extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {year: new Date().getFullYear()};
   }
