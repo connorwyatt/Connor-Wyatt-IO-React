@@ -1,0 +1,18 @@
+@import '../styles/theme';
+
+.cw-footer {
+  box-shadow: $shadow-depth-1;
+
+  &--copyright {
+    @include absolute-border(1px solid $color-secondary);
+    @include page-side-padding;
+    @include typography('small');
+    align-items: center;
+    background-color: $color-primary-dark;
+    color: $color-text-inverted;
+    display: flex;
+    height: $base-line-height * 2;
+    justify-content: center;
+    line-height: 1;
+  }
+}

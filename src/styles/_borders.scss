@@ -1,0 +1,20 @@
+$border-radius-standard: 3px;
+$border-radius-large: 8px;
+
+@mixin absolute-border($border-top: 0, $border-right: 0, $border-bottom: 0, $border-left: 0) {
+  position: relative;
+
+  &::before {
+    border-bottom: $border-bottom;
+    border-left: $border-left;
+    border-right: $border-right;
+    border-top: $border-top;
+    bottom: 0;
+    content: '';
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
