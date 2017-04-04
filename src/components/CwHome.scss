@@ -3,16 +3,37 @@
 .cw-home {
   &--hero-image {
     color: $color-white;
-    height: 100vh;
+    height: $base-line-height * 7;
+    justify-content: center;
     letter-spacing: 2.5px;
 
+    @media #{$mediaQuery-ld} {
+      height: $base-line-height * 11;
+    }
+
+    @media #{$mediaQuery-hd} {
+      height: calc(100vh - #{$header-height});
+    }
+
     &-title {
-      font-weight: font-weight('extralight');
       font-size: font-size('xlarge');
+      font-weight: font-weight('extralight');
+      letter-spacing: 2.5px;
+      line-height: $base-line-height;
+      margin-left: auto;
+      max-width: $base-line-height * 17;
+      text-transform: uppercase;
     }
 
     &-subtitle {
+      color: $color-secondary-text-inverted;
+      font-size: font-size('regular');
       font-weight: font-weight('regular');
+      letter-spacing: 2.5px;
+      line-height: $base-line-height;
+      margin-left: auto;
+      max-width: $base-line-height * 15;
+      text-transform: uppercase;
     }
   }
 }
