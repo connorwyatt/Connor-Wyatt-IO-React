@@ -11,12 +11,12 @@
     "deploy": "firebase deploy"
   },
   "dependencies": {
-    "@types/react": "^15.0.21",
-    "@types/react-dom": "^0.14.23",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "@types/react": "^15.0.21",
+    "@types/react-dom": "^0.14.23",
     "babel": "^6.23.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
@@ -36,7 +36,6 @@
     "url-loader": "^0.5.8",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2",
-    "webpack-merge": "^4.1.0",
-    "yargs": "^7.0.2"
+    "webpack-merge": "^4.1.0"
   }
 }
