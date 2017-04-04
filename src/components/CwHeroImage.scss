@@ -12,7 +12,7 @@
 
   &--content {
     @include page-side-padding;
-    background-color: transparentize($color-primary-dark, .75);
+    background-color: transparentize($color-secondary, .75);
     display: flex;
     flex: 1 1 auto;
     flex-direction: column;
@@ -21,7 +21,7 @@
     width: 100%;
 
     @media #{$mediaQuery-ld} {
-      box-shadow: $shadow-depth-1;
+      box-shadow: $shadow-depth-3;
       display: block;
       flex: 0 0 auto;
       padding-bottom: $base-line-height;

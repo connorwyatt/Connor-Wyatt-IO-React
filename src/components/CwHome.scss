@@ -2,6 +2,7 @@
 
 .cw-home {
   &--hero-image {
+    box-shadow: $shadow-depth-1;
     color: $color-white;
     height: $base-line-height * 7;
     justify-content: center;
