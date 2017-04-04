@@ -6,7 +6,7 @@ interface IPropTypes {
   src: string;
 }
 
-const CwHeroImage: StatelessComponent<IPropTypes> = ({ children, src }) => (
+export const CwHeroImage: StatelessComponent<IPropTypes> = ({ children, src }) => (
   <div className="cw-hero-image" style={{ backgroundImage: `url(${src})` }}>
     {children}
   </div>
@@ -15,5 +15,3 @@ const CwHeroImage: StatelessComponent<IPropTypes> = ({ children, src }) => (
 CwHeroImage.propTypes = {
   src: PropTypes.string.isRequired
 };
-
-export default CwHeroImage;

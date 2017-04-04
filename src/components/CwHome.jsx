@@ -1,5 +1,5 @@
 import React from 'react';
-import CwHeroImage from './CwHeroImage';
+import {CwHeroImage} from './CwHeroImage';
 
 import './CwHome.scss';
 
