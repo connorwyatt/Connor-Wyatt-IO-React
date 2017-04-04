@@ -1,7 +1,7 @@
 import React from 'react';
-import CwHeader from './CwHeader.jsx';
-import CwHome from './CwHome.jsx';
-import CwFooter from './CwFooter.jsx';
+import CwHeader from './CwHeader';
+import CwHome from './CwHome';
+import CwFooter from './CwFooter';
 
 import './CwAppRoot.scss';
 

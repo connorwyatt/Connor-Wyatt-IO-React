@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class CwFooter extends React.Component {
+export default class CwFooter extends Component {
   constructor(props) {
     super(props);
     this.state = {year: new Date().getFullYear()};

@@ -4,24 +4,50 @@ const path = require('path'),
   CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: {app: './src/bootstrap.jsx', vendor: './src/vendor.js'},
+  entry: {
+    app: './src/bootstrap.jsx',
+    libs: [
+      'tslib',
+      'react',
+      'react-dom'
+    ]
+  },
   output: {path: path.resolve(__dirname, '..', 'dist'), filename: '[name].[chunkhash].js'},
   devServer: {
     https: true
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react']
+            }
+          },
+          {
+            loader: 'ts-loader'
+          }
+        ],
+        exclude: /node_modules/
+      },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react']
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react']
+            }
+          }
+        ],
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        loaders: [
+        use: [
           {
             loader: 'style-loader'
           }, {
@@ -33,17 +59,24 @@ module.exports = {
       },
       {
         test: /\.(eot|svg)$/,
-        loader: 'file-loader?name=[name].[hash:20].[ext]'
+        loader: 'file-loader',
+        options: {
+          name: '[name].[hash:20].[ext]'
+        }
       },
       {
         test: /\.(ttf|woff)$/,
-        loader: 'url-loader?name=[name].[hash:20].[ext]&limit=10000'
+        loader: 'url-loader',
+        options: {
+          name: '[name].[hash:20].[ext]',
+          limit: 10000
+        }
       }
     ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['app', 'vendor']
+      names: ['app', 'libs']
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -54,5 +87,8 @@ module.exports = {
       from: 'src/assets',
       to: 'assets'
     }])
-  ]
+  ],
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js']
+  }
 };
