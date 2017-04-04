@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'mediaQueries';
 @import 'utilities';
 
 $fonts-base-location: './assets/fonts';
@@ -108,11 +109,14 @@ $line-height-overrides: ();
   font-weight: font-weight('medium');
 }
 
-@mixin paragraph() {
+@mixin paragraph($margin: true) {
   @include typography('regular');
   font-weight: font-weight('regular');
-  margin-bottom: $base-line-height;
   text-align: justify;
+
+  @if ($margin) {
+    margin-bottom: $base-line-height;
+  }
 }
 
 @mixin inherit-font-colors() {

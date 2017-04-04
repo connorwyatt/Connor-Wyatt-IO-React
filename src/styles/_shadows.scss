@@ -1,0 +1,15 @@
+@import 'colors';
+
+$shadow-depth-1: 0 2px 5px 0 transparentize($color-black, .84), 0 2px 10px 0 transparentize($color-black, .88);
+$shadow-depth-2: 0 5px 11px 0 transparentize($color-black, .42), 0 4px 15px 0 transparentize($color-black, .85);
+$shadow-depth-3: 0 8px 17px 0 transparentize($color-black, .98), 0 6px 20px 0 transparentize($color-black, .81);
+$shadow-depth-4: 0 12px 15px 0 transparentize($color-black, .76), 0 17px 50px 0 transparentize($color-black, .81);
+$shadow-depth-5: 0 16px 28px 0 transparentize($color-black, .78), 0 25px 55px 0 transparentize($color-black, .79);
+$shadow-depth-6: 0 27px 24px 0 transparentize($color-black, .8), 0 40px 77px 0 transparentize($color-black, .78);
+
+$shadow-depth-1: 0 2px 10px 0 transparentize($color-black, .88);
+$shadow-depth-2: 0 4px 15px 0 transparentize($color-black, .85);
+$shadow-depth-3: 0 6px 20px 0 transparentize($color-black, .81);
+$shadow-depth-4: 0 17px 50px 0 transparentize($color-black, .81);
+$shadow-depth-5: 0 25px 55px 0 transparentize($color-black, .79);
+$shadow-depth-6: 0 40px 77px 0 transparentize($color-black, .78);

@@ -1,0 +1,24 @@
+@import 'mediaQueries';
+
+$page-side-padding-mobile: 10px;
+$page-side-padding-tablet: 20px;
+$page-side-padding-ld: 3%;
+
+@mixin page-side-padding-mobile-and-tablet() {
+  padding-left: $page-side-padding-mobile;
+  padding-right: $page-side-padding-mobile;
+
+  @media #{$mediaQuery-tablet} {
+    padding-left: $page-side-padding-tablet;
+    padding-right: $page-side-padding-tablet;
+  }
+}
+
+@mixin page-side-padding() {
+  @include page-side-padding-mobile-and-tablet;
+
+  @media #{$mediaQuery-ld} {
+    padding-left: $page-side-padding-ld;
+    padding-right: $page-side-padding-ld;
+  }
+}

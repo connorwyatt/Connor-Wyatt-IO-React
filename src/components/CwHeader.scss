@@ -1,0 +1,66 @@
+@import '../styles/theme';
+
+.cw-header {
+  @include page-side-padding;
+  background-color: $color-primary;
+  border-bottom: 1px solid $color-secondary;
+  box-shadow: $shadow-depth-1;
+  color: $color-text-inverted;
+  height: 100%;
+
+  &--container {
+    display: flex;
+    height: 100%;
+  }
+
+  &--branding {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+
+    @media #{$mediaQuery-ld} {
+      flex: 0 1 auto;
+    }
+  }
+
+  &--title {
+    @include typography('regular');
+    color: $color-text-inverted;
+    font-weight: font-weight('extralight');
+    letter-spacing: 2px;
+    line-height: 1;
+    text-transform: uppercase;
+
+    &__bold {
+      font-weight: font-weight('semibold');
+
+      @media #{$mediaQuery-retina-display} {
+        font-weight: font-weight('medium');
+      }
+    }
+  }
+
+  &--links {
+    display: none;
+
+    @media #{$mediaQuery-ld} {
+      display: block;
+      flex: 1 1 auto;
+      text-align: right;
+    }
+  }
+
+  &--link {
+    @include paragraph(false);
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
+    padding: 0 10px;
+
+    &:hover,
+    &:active {
+      background-color: $color-white;
+      color: $color-primary-dark;
+    }
+  }
+}
