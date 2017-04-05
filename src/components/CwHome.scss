@@ -7,6 +7,7 @@
     height: $base-line-height * 7;
     justify-content: center;
     letter-spacing: 2.5px;
+    margin-bottom: $base-line-height;
 
     @media #{$mediaQuery-ld} {
       height: $base-line-height * 11;
@@ -36,5 +37,23 @@
       max-width: $base-line-height * 15;
       text-transform: uppercase;
     }
+  }
+
+  &--grid {
+    @include grid();
+
+    @media #{$mediaQuery-ld} {
+      padding-left: $page-side-padding-ld;
+      padding-right: $page-side-padding-ld;
+    }
+  }
+
+  &--grid-item {
+    @include grid-item(12);
+  }
+
+  &--panel {
+    @include panel();
+    margin-bottom: $base-line-height;
   }
 }

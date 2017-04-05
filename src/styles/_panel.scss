@@ -1,0 +1,22 @@
+@import 'colors';
+@import 'fonts';
+@import 'pagePadding';
+@import 'shadows';
+
+@mixin panel($dark: false) {
+  @include page-side-padding-mobile-and-tablet;
+  background-color: $color-white;
+  box-shadow: $shadow-depth-1;
+  display: inline-block;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $shadow-depth-3;
+  }
+
+  @if ($dark) {
+    @include inherit-font-colors;
+    background-color: $color-grey-dark;
+    color: $color-text-inverted;
+  }
+}
