@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {CwHeader} from './CwHeader';
-import CwHome from './CwHome';
-import {CwFooter} from './CwFooter';
-
 import './CwAppRoot.scss';
+import {CwFooter} from './CwFooter';
+import {CwHeader} from './CwHeader';
+import {CwHome} from './CwHome';
 
-export default class CwAppRoot extends Component {
+export class CwAppRoot extends Component<null, null> {
   render() {
     return <div>
       <span className="cw-app-root--header"><CwHeader/></span>

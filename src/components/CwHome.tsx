@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {StatelessComponent} from 'react';
 import {CwHeroImage} from './CwHeroImage';
-
 import './CwHome.scss';
 
-const CwHome = () => (
+export const CwHome: StatelessComponent<null> = () => (
   <div>
     <div className="cw-home--hero-image">
       <CwHeroImage src={'assets/images/mac.jpg'}>
@@ -13,5 +12,3 @@ const CwHome = () => (
     </div>
   </div>
 );
-
-export default CwHome;

@@ -5,7 +5,7 @@ const path = require('path'),
 
 module.exports = {
   entry: {
-    app: './src/bootstrap.jsx',
+    app: './src/bootstrap.tsx',
     libs: [
       'tslib',
       'react',
@@ -29,18 +29,6 @@ module.exports = {
           },
           {
             loader: 'ts-loader'
-          }
-        ],
-        exclude: /node_modules/
-      },
-      {
-        test: /\.jsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['es2015', 'react']
-            }
           }
         ],
         exclude: /node_modules/
