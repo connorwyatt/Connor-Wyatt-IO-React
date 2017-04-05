@@ -39,26 +39,16 @@ module.exports = {
           {
             loader: 'style-loader'
           }, {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              url: false,
+              minimize: true,
+              discardComments: {removeAll: true}
+            }
           }, {
             loader: 'sass-loader'
           }
         ]
-      },
-      {
-        test: /\.(eot|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[hash:20].[ext]'
-        }
-      },
-      {
-        test: /\.(ttf|woff)$/,
-        loader: 'url-loader',
-        options: {
-          name: '[name].[hash:20].[ext]',
-          limit: 10000
-        }
       }
     ]
   },
