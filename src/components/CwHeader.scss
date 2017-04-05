@@ -25,7 +25,7 @@
 
   &--title {
     @include typography('regular');
-    color: $color-text-inverted;
+    color: inherit;
     font-weight: font-weight('extralight');
     letter-spacing: 2px;
     line-height: 1;
