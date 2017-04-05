@@ -3,13 +3,60 @@
 .cw-footer {
   box-shadow: $shadow-depth-1;
 
+  &--content,
   &--copyright {
     @include absolute-border(1px solid $color-secondary);
     @include page-side-padding;
+    color: $color-text-inverted;
+  }
+
+  &--content {
+    background-color: $color-primary;
+    padding-bottom: $base-line-height;
+  }
+
+  &--section {
+    width: 100%;
+
+    & + & {
+      margin-top: $base-line-height;
+    }
+
+    @media #{$mediaQuery-ld} {
+      display: inline-block;
+      width: 50%;
+
+      & + & {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &--title {
+    @include h2;
+    color: inherit;
+    text-align: center;
+  }
+
+  &--text {
+    @include paragraph(false);
+    text-align: center;
+  }
+
+  &--linkContainer {
+    text-align: center;
+  }
+
+  &--link {
+    @include typography('regular');
+    color: inherit;
+    font-weight: font-weight('regular');
+  }
+
+  &--copyright {
     @include typography('small');
     align-items: center;
     background-color: $color-primary-dark;
-    color: $color-text-inverted;
     display: flex;
     height: $base-line-height * 2;
     justify-content: center;
