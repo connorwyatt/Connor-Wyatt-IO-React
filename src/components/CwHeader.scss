@@ -58,6 +58,7 @@
     padding: 0 10px;
     transition: standard-transition(background-color), standard-transition(color);
 
+    &__active,
     &:hover,
     &:active {
       background-color: $color-white;

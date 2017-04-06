@@ -2,7 +2,7 @@ import React, {StatelessComponent} from 'react';
 import {CwHeroImage} from './CwHeroImage';
 import './CwHome.scss';
 
-export const CwHome: StatelessComponent<null> = () => (
+export const CwHome: StatelessComponent<void> = () => (
   <div>
     <div className="cw-home--hero-image">
       <CwHeroImage src={'assets/images/mac.jpg'}>

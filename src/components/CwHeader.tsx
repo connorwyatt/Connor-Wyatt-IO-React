@@ -1,17 +1,23 @@
 import React, {StatelessComponent} from 'react';
+import {Link, NavLink} from 'react-router-dom';
 import './CwHeader.scss';
 
 export const CwHeader: StatelessComponent<null> = () => {
-  const links = [].map(link => {
-    return <a className="cw-header--link" key={link}>{link}</a>;
+  const links = [{name: 'About Me', url: '/about-me'}].map(link => {
+    return <NavLink to={link.url}
+                    className="cw-header--link"
+                    activeClassName="cw-header--link__active"
+                    key={link.url}>{link.name}</NavLink>;
   });
 
   return <header className="cw-header">
     <div className="cw-header--container">
       <span className="cw-header--branding">
-        <h1 className="cw-header--title">
-          <span className="cw-header--title__bold">Connor</span> Wyatt IO
-        </h1>
+        <Link to="/">
+          <h1 className="cw-header--title">
+            <span className="cw-header--title__bold">Connor</span> Wyatt IO
+          </h1>
+        </Link>
       </span>
       <nav className="cw-header--links">
         {links}
