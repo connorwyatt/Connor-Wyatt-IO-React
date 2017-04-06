@@ -2,12 +2,14 @@
 @import 'fonts';
 @import 'pagePadding';
 @import 'shadows';
+@import 'transitions';
 
 @mixin panel($dark: false) {
   @include page-side-padding-mobile-and-tablet;
   background-color: $color-white;
   box-shadow: $shadow-depth-1;
   display: inline-block;
+  transition: box-shadow $standard-transition-duration ease-in-out;
   width: 100%;
 
   &:hover {

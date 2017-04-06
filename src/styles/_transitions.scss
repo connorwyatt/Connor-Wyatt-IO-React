@@ -1,0 +1,5 @@
+$standard-transition-duration: .4s;
+
+@function standard-transition($property) {
+  @return $property $standard-transition-duration ease-in-out;
+}
