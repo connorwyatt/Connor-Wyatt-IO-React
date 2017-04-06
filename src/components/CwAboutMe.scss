@@ -1,0 +1,22 @@
+@import '../styles/theme';
+
+.cw-about-me {
+  &--grid {
+    @include grid();
+    padding-top: $base-line-height;
+
+    @media #{$mediaQuery-ld} {
+      padding-left: $page-side-padding-ld;
+      padding-right: $page-side-padding-ld;
+    }
+  }
+
+  &--gridItem {
+    @include grid-item(12);
+  }
+
+  &--panel {
+    @include panel();
+    margin-bottom: $base-line-height;
+  }
+}
