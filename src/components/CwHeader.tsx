@@ -3,7 +3,12 @@ import {Link, NavLink} from 'react-router-dom';
 import './CwHeader.scss';
 
 export const CwHeader: StatelessComponent<null> = () => {
-  const links = [{name: 'About Me', url: '/about-me'}].map(link => {
+  const links: Array<{ name: string; url: string; }> = [
+    {name: 'About Me', url: '/about-me'},
+    {name: 'Contact Me', url: '/contact-me'}
+  ];
+
+  const linkElements = links.map(link => {
     return <NavLink to={link.url}
                     className="cw-header--link"
                     activeClassName="cw-header--link__active"
@@ -20,7 +25,7 @@ export const CwHeader: StatelessComponent<null> = () => {
         </Link>
       </span>
       <nav className="cw-header--links">
-        {links}
+        {linkElements}
       </nav>
     </div>
   </header>;

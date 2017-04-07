@@ -1,0 +1,38 @@
+@import '../styles/theme';
+
+.cw-contact-me {
+  padding-top: $base-line-height;
+
+  &--grid {
+    @include grid();
+
+    @media #{$mediaQuery-ld} {
+      padding-left: $page-side-padding-ld;
+      padding-right: $page-side-padding-ld;
+    }
+  }
+
+  &--form-grid-item {
+    @include grid-item(8, true);
+  }
+
+  &--form-panel {
+    @include panel();
+    margin-bottom: $base-line-height;
+    padding-bottom: $base-line-height;
+  }
+
+  &--explanation-grid-item {
+    @include grid-item(4, true);
+  }
+
+  &--explanation-panel {
+    @include panel(true);
+    margin-bottom: $base-line-height;
+    padding-top: $base-line-height;
+
+    &-text {
+      @include typography(small);
+    }
+  }
+}
