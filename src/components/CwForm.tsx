@@ -18,9 +18,3 @@ export const CwForm: StatelessComponent<IProps> = props => {
     {formControls}
   </form>;
 };
-
-CwForm.propTypes = {
-  name: PropTypes.string.isRequired,
-  form: PropTypes.object,
-  formControlConfig: PropTypes.arrayOf(PropTypes.object)
-};

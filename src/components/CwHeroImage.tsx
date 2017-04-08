@@ -13,7 +13,3 @@ export const CwHeroImage: StatelessComponent<IProps> = ({children, src}) => {
     )}
   </div>;
 };
-
-CwHeroImage.propTypes = {
-  src: PropTypes.string.isRequired
-};
