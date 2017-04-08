@@ -3,8 +3,8 @@ import {Subject} from 'rxjs/Subject';
 import {IFieldControl} from '../interfaces';
 
 export class FieldControl<T> implements IFieldControl<Nullable<T>> {
-  public static create<T>(value: Nullable<T>): FieldControl<T> {
-    return new this<T>(value);
+  public static create<T>(label: Nullable<string>, value: Nullable<T>): FieldControl<T> {
+    return new this<T>(label, value);
   }
 
   public get value(): Nullable<T> {
@@ -15,8 +15,8 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
     return this._valueChange.asObservable();
   };
 
-  public get label(): string {
-    return 'Label';
+  public get label(): Nullable<string> {
+    return this._label;
   }
 
   public get isEmpty(): boolean {
@@ -31,10 +31,12 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
     return null;
   };
 
+  private _label: Nullable<string>;
   private _value: Nullable<T>;
   private _valueChange: Subject<Nullable<T>> = new Subject<Nullable<T>>();
 
-  private constructor(value: Nullable<T> = null) {
+  private constructor(label: Nullable<string>, value: Nullable<T> = null) {
+    this._label = label;
     this._value = value;
   }
 
