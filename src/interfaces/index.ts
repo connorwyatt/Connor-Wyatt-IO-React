@@ -3,3 +3,4 @@ export * from './IFieldControl';
 export * from './IFieldComponentConfig';
 export * from './IFieldComponentProps';
 export * from './IFormControl';
+export * from './IValidator';

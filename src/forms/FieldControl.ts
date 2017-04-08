@@ -1,10 +1,10 @@
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {IFieldControl} from '../interfaces';
+import {IFieldControl, IValidator} from '../interfaces';
 
 export class FieldControl<T> implements IFieldControl<Nullable<T>> {
-  public static create<T>(label: Nullable<string>, value: Nullable<T>): FieldControl<T> {
-    return new this<T>(label, value);
+  public static create<T>(label: Nullable<string>, value?: Nullable<T>, validators?: Array<IValidator>): FieldControl<T> {
+    return new this<T>(label, value, validators);
   }
 
   public get value(): Nullable<T> {
@@ -24,24 +24,50 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
   }
 
   public get isValid(): boolean {
-    return true;
+    if (this._errors === null) {
+      return true;
+    }
+
+    return !(Object.keys(this._errors).length > 0);
   };
 
   public get errors(): Nullable<Dictionary<any>> {
-    return null;
+    return this._errors;
   };
 
-  private _label: Nullable<string>;
-  private _value: Nullable<T>;
+  private _label: Nullable<string> = null;
+  private _value: Nullable<T> = null;
   private _valueChange: Subject<Nullable<T>> = new Subject<Nullable<T>>();
+  private _errors: Nullable<Dictionary<any>> = null;
+  private _validators: Array<IValidator>;
 
-  private constructor(label: Nullable<string>, value: Nullable<T> = null) {
+  private constructor(label: Nullable<string>, value: Nullable<T> = null, validators: Array<IValidator> = []) {
     this._label = label;
     this._value = value;
+    this._validators = validators;
   }
 
   public setValue(value: Nullable<T>): void {
     this._value = value;
+
+    this._errors = this.validate();
+
     this._valueChange.next(this._value);
+  }
+
+  private validate(): Nullable<Dictionary<any>> {
+    const errors = this._validators.reduce((accumulatedErrors, validator) => {
+      const partialErrors = validator.validate(this);
+
+      if (partialErrors === null) {
+        return accumulatedErrors;
+      }
+
+      return Object.assign({}, accumulatedErrors, {
+        [validator.name]: partialErrors
+      });
+    }, {});
+
+    return Object.keys(errors).length > 0 ? errors : null;
   }
 }

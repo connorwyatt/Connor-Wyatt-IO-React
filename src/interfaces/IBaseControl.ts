@@ -9,5 +9,5 @@ export interface IBaseControl<T> {
 
   readonly valueChange: Observable<Nullable<T>>;
 
-  setValue(value: T): void;
+  setValue(value: Nullable<T>): void;
 }

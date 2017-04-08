@@ -7,9 +7,12 @@ module.exports = {
   entry: {
     app: './src/bootstrap.tsx',
     libs: [
+      'core-js',
       'tslib',
       'react',
       'react-dom',
+      'react-router',
+      'react-router-dom',
       'rxjs'
     ]
   },
