@@ -11,8 +11,8 @@
   position: relative;
   width: 100%;
 
-  &__invalid #{$inputClass},
-  &__invalid #{$inputClass}:focus {
+  &#{&}__invalid #{$inputClass},
+  &#{&}__invalid #{$inputClass}:focus {
     border-color: $color-error;
   }
 
