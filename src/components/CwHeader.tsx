@@ -2,7 +2,7 @@ import React, {StatelessComponent} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './CwHeader.scss';
 
-export const CwHeader: StatelessComponent<null> = () => {
+export const CwHeader: StatelessComponent<void> = () => {
   const links: Array<{ name: string; url: string; }> = [
     {name: 'About Me', url: '/about-me'},
     {name: 'Contact Me', url: '/contact-me'}
