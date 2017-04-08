@@ -1,0 +1,65 @@
+@import 'borders';
+@import 'colors';
+@import 'fonts';
+@import 'transitions';
+
+@mixin input($inputClass, $labelClass, $errorMessagesClass) {
+  display: inline-block;
+  margin-top: 5px;
+  min-height: $base-line-height * 2;
+  padding-top: $base-line-height;
+  position: relative;
+  width: 100%;
+
+  &__invalid #{$inputClass},
+  &__invalid #{$inputClass}:focus {
+    border-color: $color-error;
+  }
+
+  #{$labelClass} {
+    color: $color-disabled-text;
+    cursor: text;
+    font-size: font-size('small');
+    left: 0;
+    line-height: $base-line-height;
+    padding-left: 10px;
+    position: absolute;
+    top: $base-line-height;
+    transition: color $standard-transition-duration ease-in-out,
+    font-size $standard-transition-duration ease-in-out,
+    top $standard-transition-duration ease-in-out;
+  }
+
+  #{$inputClass} {
+    background-color: $color-grey-light;
+    border: 1px solid transparent;
+    border-left: 5px solid $color-primary-dark;
+    border-radius: $border-radius-standard;
+    color: $color-text;
+    min-height: $base-line-height;
+    outline: none;
+    padding-left: 5px;
+    width: 100%;
+  }
+
+  #{$inputClass}:focus {
+    border-bottom-color: $color-primary-dark;
+    border-right-color: $color-primary-dark;
+    border-top-color: $color-primary-dark;
+  }
+
+  #{$inputClass}:focus + #{$labelClass},
+  #{$inputClass}__not-empty + #{$labelClass} {
+    color: $color-text;
+    cursor: default;
+    font-size: font-size('xsmall');
+    top: 0;
+  }
+
+  #{$errorMessagesClass} {
+    @include typography(xsmall);
+    color: $color-error;
+    display: block;
+    padding-left: 10px;
+  }
+}

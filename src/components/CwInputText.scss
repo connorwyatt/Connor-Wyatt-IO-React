@@ -1,0 +1,5 @@
+@import '../styles/theme';
+
+.cw-input-text {
+  @include input('.cw-input-text--input', '.cw-input-text--label', '.cw-input-text--messages');
+}

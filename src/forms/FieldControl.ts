@@ -19,6 +19,10 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
     return 'Label';
   }
 
+  public get isEmpty(): boolean {
+    return !this._value;
+  }
+
   public get isValid(): boolean {
     return true;
   };
