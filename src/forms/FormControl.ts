@@ -1,38 +1,70 @@
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
-import {IFormControl} from '../interfaces/IFormControl';
-import {Nullable} from '../interfaces/Nullable';
+import {IFieldControl, IFormControl} from '../interfaces';
 
-export class FormControl<T> implements IFormControl<Nullable<T>> {
-  public static create<T>(value: Nullable<T>): FormControl<T> {
-    return new this<T>(value);
+export class FormControl implements IFormControl {
+  public static create(controls: Dictionary<IFieldControl<any>>): FormControl {
+    return new FormControl(controls);
   }
 
-  public get value(): Nullable<T> {
-    return this._value;
-  }
-
-  public get valueChange(): Observable<T> {
-    return this._valueChange.asObservable();
+  public get value(): Dictionary<any> {
+    return Object.keys(this._controls).reduce((accumulatedValue, key) => {
+      return Object.assign(
+        {},
+        accumulatedValue,
+        {[key]: this._controls[key].value}
+      );
+    }, {});
   };
+
+  public get valueChange(): Observable<Dictionary<any>> {
+    return this._valueChange;
+  };
+
+  public get controls(): Dictionary<IFieldControl<any>> {
+    return this._controls;
+  }
 
   public get isValid(): boolean {
     return true;
   };
 
-  public get errors(): Nullable<{ [key: string]: any; }> {
+  public get errors(): Nullable<Dictionary<any>> {
     return null;
   };
 
-  private _value: Nullable<T>;
-  private _valueChange: Subject<Nullable<T>> = new Subject<Nullable<T>>();
+  private _valueChange: Observable<any>;
+  private _controls: Dictionary<IFieldControl<any>>;
 
-  private constructor(value: Nullable<T> = null) {
-    this._value = value;
+  private constructor(controls: Dictionary<IFieldControl<any>> = {}) {
+    this._controls = controls;
+
+    this._valueChange = this.getValueChangeObservable(controls);
   }
 
-  public setValue(value: Nullable<T>): void {
-    this._value = value;
-    this._valueChange.next(this._value);
+  public setValue(value: Dictionary<any>): void {
+    const valueKeys = Object.keys(value);
+
+    valueKeys.forEach(key => {
+      const control = this._controls[key];
+
+      if (control) {
+        control.setValue(value[key]);
+      }
+    });
+  }
+
+  private getValueChangeObservable(controls: Dictionary<IFieldControl<any>>): Observable<Dictionary<any>> {
+    const fieldNames = Object.keys(controls);
+
+    const fieldObservables = fieldNames.map(fieldName => {
+      const control = controls[fieldName];
+
+      return control.valueChange;
+    });
+
+    return Observable.merge(...fieldObservables).map(() => this.value).share();
   }
 }
