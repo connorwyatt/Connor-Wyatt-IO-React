@@ -9,7 +9,8 @@ module.exports = {
     libs: [
       'tslib',
       'react',
-      'react-dom'
+      'react-dom',
+      'rxjs'
     ]
   },
   output: {path: path.resolve(__dirname, '..', 'dist'), filename: '[name].[chunkhash].js'},
