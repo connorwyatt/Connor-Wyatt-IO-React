@@ -1,4 +1,4 @@
-import React, {PropTypes, StatelessComponent} from 'react';
+import React, {StatelessComponent} from 'react';
 
 import './CwHeroImage.scss';
 
