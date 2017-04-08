@@ -28,11 +28,27 @@ export class FormControl implements IFormControl {
   }
 
   public get isValid(): boolean {
-    return true;
+    if (this.errors === null) {
+      return true;
+    }
+
+    return !(Object.keys(this.errors).length > 0);
   };
 
   public get errors(): Nullable<Dictionary<any>> {
-    return null;
+    const errors =  Object.keys(this._controls).reduce((accumulatedErrors, key) => {
+      let controlErrors = this._controls[key].errors;
+
+      if (controlErrors === null) {
+        return accumulatedErrors;
+      }
+
+      return Object.assign({}, accumulatedErrors, {
+        [key]: controlErrors
+      });
+    }, {});
+
+    return Object.keys(errors).length > 0 ? errors : null;
   };
 
   private _valueChange: Observable<any>;
