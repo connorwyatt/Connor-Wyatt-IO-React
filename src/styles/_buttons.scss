@@ -1,0 +1,47 @@
+@import 'borders';
+@import 'colors';
+@import 'fonts';
+@import 'shadows';
+@import 'transitions';
+
+@mixin button-reset() {
+  background: none;
+  border: 0;
+  outline: none;
+  padding: 0;
+}
+
+@mixin button($color) {
+  @include button-reset;
+  background-color: $color;
+  border: 1px $color solid;
+  border-radius: $border-radius-standard;
+  color: $color-text-inverted;
+  height: $base-line-height;
+  transition: background-color $standard-transition-duration ease-in-out,
+  border-color $standard-transition-duration ease-in-out,
+  box-shadow $standard-transition-duration ease-in-out,
+  color $standard-transition-duration ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: $shadow-depth-1;
+  }
+}
+
+@mixin button-disabled() {
+  @include button-reset;
+  border: 1px $color-grey solid;
+  border-radius: $border-radius-standard;
+  color: $color-grey;
+  height: $base-line-height;
+  pointer-events: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $color-text-inverted;
+    color: $color-grey;
+  }
+}

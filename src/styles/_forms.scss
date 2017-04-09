@@ -1,0 +1,20 @@
+@import 'buttons';
+
+@mixin form-buttons() {
+  margin-top: 20px;
+}
+
+@mixin form-button($color) {
+  @include button($color);
+  @include typography(small);
+  width: 100%;
+
+  @media #{$mediaQuery-tablet} {
+    min-width: 100px;
+    width: auto;
+  }
+
+  &[disabled] {
+    @include button-disabled;
+  }
+}

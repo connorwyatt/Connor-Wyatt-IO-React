@@ -1,0 +1,11 @@
+@import '../styles/theme';
+
+.cw-form {
+  &--form-buttons {
+    @include form-buttons;
+  }
+
+  &--form-button {
+    @include form-button($color-success);
+  }
+}
