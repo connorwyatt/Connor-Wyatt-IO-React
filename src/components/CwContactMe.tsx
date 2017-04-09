@@ -1,4 +1,4 @@
-import React, {Component, ReactElement} from 'react';
+import React, {Component, FormEvent, ReactElement} from 'react';
 import {FieldControl, FormControl, MaxLengthValidator, PatternValidator, RequiredValidator} from '../forms';
 import {IFieldComponentConfig, IFormControl} from '../interfaces';
 import './CwContactMe.scss';
@@ -15,6 +15,8 @@ interface IState {
 export class CwContactMe extends Component<void, IState> {
   public constructor() {
     super();
+
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     const form = FormControl.create({
       name: FieldControl.create<string>('Name', '', [RequiredValidator.create(), MaxLengthValidator.create(50)]),
@@ -44,7 +46,8 @@ export class CwContactMe extends Component<void, IState> {
           <div className="cw-contact-me--form-panel">
             <CwForm name="contactMe"
                     form={this.state.form}
-                    fieldComponentConfig={this.state.fieldComponentConfig}/>
+                    fieldComponentConfig={this.state.fieldComponentConfig}
+                    onSubmit={this.handleSubmit}/>
           </div>
         </div>
 
@@ -61,5 +64,15 @@ export class CwContactMe extends Component<void, IState> {
         </div>
       </div>
     </div>;
+  }
+
+  private handleSubmit(event: FormEvent<HTMLFormElement>): void {
+    const form = this.state.form;
+
+    if (!form.isValid) {
+      return;
+    }
+
+    console.log(form);
   }
 }
