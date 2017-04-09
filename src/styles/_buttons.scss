@@ -18,10 +18,10 @@
   border-radius: $border-radius-standard;
   color: $color-text-inverted;
   height: $base-line-height;
-  transition: background-color $standard-transition-duration ease-in-out,
-  border-color $standard-transition-duration ease-in-out,
-  box-shadow $standard-transition-duration ease-in-out,
-  color $standard-transition-duration ease-in-out;
+  transition: standard-transition(background-color),
+  standard-transition(border-color),
+  standard-transition(box-shadow),
+  standard-transition(color);
 
   &:hover,
   &:focus,
