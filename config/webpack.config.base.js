@@ -69,8 +69,6 @@ module.exports = {
       title: 'Connor Wyatt IO',
       appName: 'Connor Wyatt IO',
       developerName: 'Connor Wyatt',
-
-      // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
       icons: {
         android: true,
         appleIcon: true,
