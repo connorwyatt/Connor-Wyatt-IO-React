@@ -32,7 +32,7 @@
 
   #{$inputClass} {
     background-color: $color-grey-light;
-    border: 1px solid transparent;
+    border: none;
     border-left: 5px solid $color-primary-dark;
     border-radius: $border-radius-standard;
     color: $color-text;
@@ -43,9 +43,9 @@
   }
 
   #{$inputClass}:focus {
-    border-bottom-color: $color-primary-dark;
-    border-right-color: $color-primary-dark;
-    border-top-color: $color-primary-dark;
+    border-bottom: 1px solid $color-primary-dark;
+    border-right: 1px solid $color-primary-dark;
+    border-top: 1px solid $color-primary-dark;
   }
 
   #{$inputClass}:focus + #{$labelClass},
