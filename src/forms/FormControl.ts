@@ -17,26 +17,48 @@ export class FormControl implements IFormControl {
         {[key]: this._controls[key].value}
       );
     }, {});
-  };
+  }
 
   public get valueChange(): Observable<Dictionary<any>> {
     return this._valueChange;
-  };
+  }
 
   public get controls(): Dictionary<IFieldControl<any>> {
     return this._controls;
   }
 
   public get isValid(): boolean {
-    if (this.errors === null) {
-      return true;
-    }
+    let anyChildrenInvalid = Object.keys(this._controls).some(key => {
+      const control = this._controls[key];
 
-    return !(Object.keys(this.errors).length > 0);
-  };
+      return !control.isValid;
+    });
+
+    return !anyChildrenInvalid;
+  }
+
+  public get isDirty(): boolean {
+    let anyChildrenPristine = Object.keys(this._controls).some(key => {
+      const control = this._controls[key];
+
+      return !control.isDirty;
+    });
+
+    return !anyChildrenPristine;
+  }
+
+  public get isTouched(): boolean {
+    let anyChildrenUntouched = Object.keys(this._controls).some(key => {
+      const control = this._controls[key];
+
+      return !control.isTouched;
+    });
+
+    return !anyChildrenUntouched;
+  }
 
   public get errors(): Nullable<Dictionary<any>> {
-    const errors =  Object.keys(this._controls).reduce((accumulatedErrors, key) => {
+    const errors = Object.keys(this._controls).reduce((accumulatedErrors, key) => {
       let controlErrors = this._controls[key].errors;
 
       if (controlErrors === null) {
@@ -49,7 +71,7 @@ export class FormControl implements IFormControl {
     }, {});
 
     return Object.keys(errors).length > 0 ? errors : null;
-  };
+  }
 
   private _valueChange: Observable<any>;
   private _controls: Dictionary<IFieldControl<any>>;

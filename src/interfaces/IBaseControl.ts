@@ -5,6 +5,10 @@ export interface IBaseControl<T> {
 
   readonly isValid: boolean;
 
+  readonly isDirty: boolean;
+
+  readonly isTouched: boolean;
+
   readonly errors: Nullable<Dictionary<any>>;
 
   readonly valueChange: Observable<Nullable<T>>;

@@ -31,6 +31,14 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
     return !(Object.keys(this._errors).length > 0);
   };
 
+  public get isDirty(): boolean {
+    return this._isDirty;
+  }
+
+  public get isTouched(): boolean {
+    return this._isTouched;
+  }
+
   public get errors(): Nullable<Dictionary<any>> {
     return this._errors;
   };
@@ -39,20 +47,30 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
   private _value: Nullable<T> = null;
   private _valueChange: Subject<Nullable<T>> = new Subject<Nullable<T>>();
   private _errors: Nullable<Dictionary<any>> = null;
+  private _isDirty: boolean = false;
+  private _isTouched: boolean = false;
   private _validators: Array<IValidator>;
 
   private constructor(label: Nullable<string>, value: Nullable<T> = null, validators: Array<IValidator> = []) {
     this._label = label;
     this._value = value;
     this._validators = validators;
+
+    this._errors = this.validate();
   }
 
   public setValue(value: Nullable<T>): void {
+    this._isDirty = true;
+
     this._value = value;
 
     this._errors = this.validate();
 
     this._valueChange.next(this._value);
+  }
+
+  public setTouched(): void {
+    this._isTouched = true;
   }
 
   private validate(): Nullable<Dictionary<any>> {
