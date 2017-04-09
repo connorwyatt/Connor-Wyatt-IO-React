@@ -1,12 +1,12 @@
 import firebase from 'firebase';
 import React, {Component, FormEvent, ReactElement} from 'react';
+import {Subscription} from 'rxjs/Subscription';
 import {FieldControl, FormControl, MaxLengthValidator, PatternValidator, RequiredValidator} from '../forms';
 import {IFieldComponentConfig, IFormControl} from '../interfaces';
 import './CwContactMe.scss';
 import {CwForm} from './CwForm';
 import {CwInputText} from './CwInputText';
 import {CwInputTextarea} from './CwInputTextarea';
-import {Subscription} from 'rxjs/Subscription';
 
 interface IState {
   form: IFormControl;
@@ -101,7 +101,5 @@ export class CwContactMe extends Component<void, IState> {
           isSubmitted: true
         });
       });
-
-    console.log(form);
   }
 }
