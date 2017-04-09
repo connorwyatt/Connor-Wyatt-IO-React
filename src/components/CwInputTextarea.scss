@@ -1,0 +1,9 @@
+@import '../styles/theme';
+
+.cw-input-textarea {
+  @include input('.cw-input-textarea--input', '.cw-input-textarea--label', '.cw-input-textarea--messages');
+
+  &--input {
+    resize: vertical;
+  }
+}
