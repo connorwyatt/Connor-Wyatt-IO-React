@@ -1,5 +1,6 @@
 const path = require('path'),
   webpack = require('webpack'),
+  FaviconsWebpackPlugin = require('favicons-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -59,6 +60,27 @@ module.exports = {
     ]
   },
   plugins: [
+    new FaviconsWebpackPlugin({
+      logo: path.resolve(__dirname, '..', 'src', 'favicon.png'),
+      prefix: '/assets/favicons/',
+      persistentCache: true,
+      inject: true,
+      background: '#fff',
+      title: 'Connor Wyatt IO',
+      appName: 'Connor Wyatt IO',
+      developerName: 'Connor Wyatt',
+
+      // which icons should be generated (see https://github.com/haydenbleasel/favicons#usage)
+      icons: {
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        favicons: true,
+        firefox: true,
+        opengraph: true,
+        twitter: true,
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['app', 'libs']
     }),
