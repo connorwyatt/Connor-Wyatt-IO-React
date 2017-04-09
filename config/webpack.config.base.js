@@ -13,7 +13,8 @@ module.exports = {
       'react-dom',
       'react-router',
       'react-router-dom',
-      'rxjs'
+      'rxjs',
+      'firebase'
     ]
   },
   output: {path: path.resolve(__dirname, '..', 'dist'), filename: '[name].[chunkhash].js'},

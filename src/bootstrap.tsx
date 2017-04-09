@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {CwAppRoot} from './components/CwAppRoot';
+import './firebaseInit';
 import './styles.scss';
 import './types';
 

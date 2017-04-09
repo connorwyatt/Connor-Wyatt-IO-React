@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "messages": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "rawMessages": {
+      ".read": "auth != null",
+      ".write": true
+    }
+  }
+}
