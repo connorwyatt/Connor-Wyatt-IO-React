@@ -1,5 +1,5 @@
 import React, {Component, ReactElement} from 'react';
-import {FieldControl, FormControl, MaxLengthValidator, RequiredValidator} from '../forms';
+import {FieldControl, FormControl, MaxLengthValidator, PatternValidator, RequiredValidator} from '../forms';
 import {IFieldComponentConfig, IFormControl} from '../interfaces';
 import './CwContactMe.scss';
 import {CwForm} from './CwForm';
@@ -18,7 +18,11 @@ export class CwContactMe extends Component<void, IState> {
 
     const form = FormControl.create({
       name: FieldControl.create<string>('Name', '', [RequiredValidator.create(), MaxLengthValidator.create(50)]),
-      email: FieldControl.create<string>('Email', '', [RequiredValidator.create(), MaxLengthValidator.create(100)]),
+      email: FieldControl.create<string>('Email', '', [
+        RequiredValidator.create(),
+        MaxLengthValidator.create(100),
+        PatternValidator.create(/.+@.+\..+/, () => 'The value is not a valid email address.')
+      ]),
       message: FieldControl.create<string>('Message', '', [RequiredValidator.create(), MaxLengthValidator.create(5000)])
     });
 

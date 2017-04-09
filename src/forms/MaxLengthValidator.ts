@@ -1,4 +1,5 @@
-import {IFieldControl, IValidator} from '../interfaces';
+import {IFieldControl, IMaxLengthValidatorError, IValidationError, IValidator} from '../interfaces';
+import {ValidationError} from './';
 
 export class MaxLengthValidator implements IValidator {
   public static create(length: number): MaxLengthValidator {
@@ -13,16 +14,16 @@ export class MaxLengthValidator implements IValidator {
     this.length = length;
   }
 
-  public validate(control: IFieldControl<any>): Nullable<any> {
+  public validate(control: IFieldControl<any>): Nullable<IValidationError<IMaxLengthValidatorError>> {
     const {value} = control;
 
     if (value === null || value.length <= this.length) {
       return null;
     }
 
-    return {
+    return new ValidationError({
       expectedLength: this.length,
       actualLength: value.length
-    };
+    });
   }
 }

@@ -1,4 +1,5 @@
-import {IFieldControl, IValidator} from '../interfaces';
+import {IFieldControl, IValidationError, IValidator} from '../interfaces';
+import {ValidationError} from './';
 
 export class RequiredValidator implements IValidator {
   public static create(): RequiredValidator {
@@ -7,13 +8,14 @@ export class RequiredValidator implements IValidator {
 
   public name: string = 'required';
 
-  private constructor() {}
+  private constructor() {
+  }
 
-  public validate(control: IFieldControl<any>): Nullable<any> {
+  public validate(control: IFieldControl<any>): Nullable<IValidationError<boolean>> {
     const {value} = control;
 
     if (value === null || value === '') {
-      return true;
+      return new ValidationError(true);
     }
 
     return null;

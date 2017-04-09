@@ -24,7 +24,7 @@ export class CwInputText extends Component<IProps, IState> {
     const isInvalid = props.fieldControl.isDirty && !props.fieldControl.isValid;
 
     const errorMessages = isInvalid ? <span className="cw-input-text--messages">
-        <CwErrorMessages errorMessages={props.fieldControl.errors}/>
+        <CwErrorMessages errors={props.fieldControl.errors}/>
       </span> : null;
 
     return <div className={ClassHelper.parse(['cw-input-text', {

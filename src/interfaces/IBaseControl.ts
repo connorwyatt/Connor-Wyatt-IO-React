@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs/Observable';
+import {IValidationError} from './';
 
 export interface IBaseControl<T> {
   readonly value: T;
@@ -9,7 +10,7 @@ export interface IBaseControl<T> {
 
   readonly isTouched: boolean;
 
-  readonly errors: Nullable<Dictionary<any>>;
+  readonly errors: Nullable<Dictionary<IValidationError<any>>>;
 
   readonly valueChange: Observable<Nullable<T>>;
 

@@ -2,7 +2,7 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
 import {Observable} from 'rxjs/Observable';
-import {IFieldControl, IFormControl} from '../interfaces';
+import {IFieldControl, IFormControl, IValidationError} from '../interfaces';
 
 export class FormControl implements IFormControl {
   public static create(controls: Dictionary<IFieldControl<any>>): FormControl {
@@ -57,7 +57,7 @@ export class FormControl implements IFormControl {
     return !anyChildrenUntouched;
   }
 
-  public get errors(): Nullable<Dictionary<any>> {
+  public get errors(): Nullable<Dictionary<IValidationError<any>>> {
     const errors = Object.keys(this._controls).reduce((accumulatedErrors, key) => {
       let controlErrors = this._controls[key].errors;
 

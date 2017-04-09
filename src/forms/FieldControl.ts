@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
-import {IFieldControl, IValidator} from '../interfaces';
+import {IFieldControl, IValidationError, IValidator} from '../interfaces';
 
 export class FieldControl<T> implements IFieldControl<Nullable<T>> {
   public static create<T>(label: Nullable<string>, value?: Nullable<T>, validators?: Array<IValidator>): FieldControl<T> {
@@ -39,14 +39,14 @@ export class FieldControl<T> implements IFieldControl<Nullable<T>> {
     return this._isTouched;
   }
 
-  public get errors(): Nullable<Dictionary<any>> {
+  public get errors(): Nullable<Dictionary<IValidationError<any>>> {
     return this._errors;
   };
 
   private _label: Nullable<string> = null;
   private _value: Nullable<T> = null;
   private _valueChange: Subject<Nullable<T>> = new Subject<Nullable<T>>();
-  private _errors: Nullable<Dictionary<any>> = null;
+  private _errors: Nullable<Dictionary<IValidationError<any>>> = null;
   private _isDirty: boolean = false;
   private _isTouched: boolean = false;
   private _validators: Array<IValidator>;

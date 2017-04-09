@@ -24,7 +24,7 @@ export class CwInputTextarea extends Component<IProps, IState> {
     const isInvalid = props.fieldControl.isDirty && !props.fieldControl.isValid;
 
     const errorMessages = isInvalid ? <span className="cw-input-textarea--messages">
-        <CwErrorMessages errorMessages={props.fieldControl.errors}/>
+        <CwErrorMessages errors={props.fieldControl.errors}/>
       </span> : null;
 
     return <div className={ClassHelper.parse(['cw-input-textarea', {
@@ -33,11 +33,11 @@ export class CwInputTextarea extends Component<IProps, IState> {
       <textarea className={ClassHelper.parse(['cw-input-textarea--input', {
         'cw-input-textarea--input__not-empty': !props.fieldControl.isEmpty
       }])}
-             id={props.id}
-             type="text"
-             value={props.fieldControl.value}
-             onChange={this.handleChange}
-             onFocus={this.handleFocus}/>
+                id={props.id}
+                type="text"
+                value={props.fieldControl.value}
+                onChange={this.handleChange}
+                onFocus={this.handleFocus}/>
 
       <label className="cw-input-textarea--label"
              htmlFor={props.id}>
