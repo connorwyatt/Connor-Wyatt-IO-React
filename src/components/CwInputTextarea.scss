@@ -3,7 +3,8 @@
 .cw-input-textarea {
   @include input('.cw-input-textarea--input', '.cw-input-textarea--label', '.cw-input-textarea--messages');
 
-  &--input {
+  #{&}--input {
+    min-height: $base-line-height * 4;
     resize: vertical;
   }
 }
