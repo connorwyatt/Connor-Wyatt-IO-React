@@ -25,6 +25,7 @@
     @media #{$mediaQuery-ld} {
       display: inline-block;
       width: 50%;
+      vertical-align: top;
 
       & + & {
         margin-top: 0;
