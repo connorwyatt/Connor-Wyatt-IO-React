@@ -4,6 +4,7 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/delay';
 import {Observable} from 'rxjs/Observable';
 import {IProject} from '../interfaces';
+import {CwLoading} from './CwLoading';
 import {CwProjectItem} from './CwProjectItem';
 import './CwProjectsList.scss';
 
@@ -24,24 +25,26 @@ export class CwProjectsList extends Component<void, IState> {
       .subscribe((projects: Dictionary<IProject>) => this.setState({projects}));
   }
 
-  public render(): ReactElement<HTMLDivElement> {
-    let content: ReactElement<HTMLElement> = <div>Loading...</div>;
+  public render(): ReactElement<HTMLElement> {
+    let content: ReactElement<HTMLElement>;
 
-    if (this.state.projects !== null) {
-      content = this.getProjectList(this.state.projects);
+    if (this.state.projects === null) {
+      content = <div className="cw-projects-list--loading"><CwLoading/></div>;
+    } else {
+      content = this.renderProjectList(this.state.projects);
     }
 
-    return <div>{content}</div>;
+    return content;
   }
 
-  private getProjectList(projects: Dictionary<IProject>) {
+  private renderProjectList(projects: Dictionary<IProject>): ReactElement<HTMLUListElement> {
     const items = Object.keys(projects).map(id => {
       const project = projects[id];
 
       return <li className="cw-projects-list--item-container" key={id}>
-          <span className="cw-projects-list--item">
-            <CwProjectItem project={project}/>
-          </span>
+        <span className="cw-projects-list--item">
+          <CwProjectItem project={project}/>
+        </span>
       </li>;
     });
 
