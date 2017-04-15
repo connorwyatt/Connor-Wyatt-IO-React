@@ -21,7 +21,8 @@ module.exports = {
   output: {path: path.resolve(__dirname, '..', 'dist'), filename: '[name].[chunkhash].js'},
   devServer: {
     https: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    inline: false
   },
   module: {
     rules: [
