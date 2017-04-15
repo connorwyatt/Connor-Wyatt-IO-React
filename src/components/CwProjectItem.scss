@@ -1,0 +1,10 @@
+@import '../styles/theme';
+
+.cw-project-item {
+  &--image {
+    display: block;
+    margin: 0 auto;
+    max-height: $base-line-height * 4;
+    max-width: 100%;
+  }
+}
