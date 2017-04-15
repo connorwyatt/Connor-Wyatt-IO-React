@@ -1,0 +1,23 @@
+@import '../styles/theme';
+
+.cw-projects-list {
+  &--items-list {
+    @include grid(true);
+    padding-bottom: $base-line-height;
+    padding-top: $base-line-height;
+
+    @media #{$mediaQuery-ld} {
+      padding-left: $page-side-padding-ld;
+      padding-right: $page-side-padding-ld;
+    }
+  }
+
+  &--item-container {
+    @include grid-item(4, true);
+    padding: 10px;
+  }
+
+  &--item {
+    @include panel;
+  }
+}

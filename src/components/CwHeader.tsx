@@ -3,9 +3,10 @@ import {Link, NavLink} from 'react-router-dom';
 import './CwHeader.scss';
 
 export const CwHeader: StatelessComponent<void> = () => {
-  const links: Array<{ name: string; url: string; }> = [
+  const links: Array<{name: string; url: string;}> = [
     {name: 'About Me', url: '/about-me'},
-    {name: 'Contact Me', url: '/contact-me'}
+    {name: 'Contact Me', url: '/contact-me'},
+    {name: 'Projects', url: '/projects'}
   ];
 
   const linkElements = links.map(link => {
