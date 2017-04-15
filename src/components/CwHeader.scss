@@ -44,17 +44,16 @@
     display: none;
 
     @media #{$mediaQuery-ld} {
-      display: block;
+      display: flex;
       flex: 1 1 auto;
-      text-align: right;
+      justify-content: flex-end;
     }
   }
 
   &--link {
     @include paragraph(false);
     align-items: center;
-    display: inline-flex;
-    height: 100%;
+    display: flex;
     padding: 0 10px;
     transition: standard-transition(background-color), standard-transition(color);
 
