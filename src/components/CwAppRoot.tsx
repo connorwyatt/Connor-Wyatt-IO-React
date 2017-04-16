@@ -6,6 +6,7 @@ import {CwContactMe} from './CwContactMe';
 import {CwFooter} from './CwFooter';
 import {CwHeader} from './CwHeader';
 import {CwHome} from './CwHome';
+import {CwProject} from './CwProject';
 import {CwProjectsList} from './CwProjectsList';
 
 export class CwAppRoot extends Component<void, void> {
@@ -15,9 +16,10 @@ export class CwAppRoot extends Component<void, void> {
         <span className="cw-app-root--header"><CwHeader/></span>
         <span className="cw-app-root--main">
           <Route exact path="/" component={CwHome}/>
-          <Route path="/about-me" component={CwAboutMe}/>
-          <Route path="/contact-me" component={CwContactMe}/>
-          <Route path="/projects" component={CwProjectsList}/>
+          <Route exact path="/about-me" component={CwAboutMe}/>
+          <Route exact path="/contact-me" component={CwContactMe}/>
+          <Route exact path="/projects" component={CwProjectsList}/>
+          <Route exact path="/projects/:projectId" component={CwProject}/>
         </span>
         <span className="cw-app-root--footer"><CwFooter/></span>
       </div>

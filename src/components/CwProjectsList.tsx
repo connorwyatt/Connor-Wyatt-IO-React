@@ -1,7 +1,7 @@
 import firebase from 'firebase';
 import React, {Component, ReactElement} from 'react';
+import {Link} from 'react-router-dom';
 import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/delay';
 import {Observable} from 'rxjs/Observable';
 import {IProject} from '../interfaces';
 import {CwLoading} from './CwLoading';
@@ -42,9 +42,9 @@ export class CwProjectsList extends Component<void, IState> {
       const project = projects[id];
 
       return <li className="cw-projects-list--item-container" key={id}>
-        <span className="cw-projects-list--item">
+        <Link className="cw-projects-list--item" to={`/projects/${id}`}>
           <CwProjectItem project={project}/>
-        </span>
+        </Link>
       </li>;
     });
 

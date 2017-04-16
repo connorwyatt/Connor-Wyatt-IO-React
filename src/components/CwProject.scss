@@ -1,0 +1,9 @@
+@import '../styles/theme';
+
+.cw-project {
+  &--loading {
+    height: $base-line-height * 3;
+    margin: ($base-line-height * 2) auto;
+    width: $base-line-height * 3;
+  }
+}
