@@ -42,9 +42,9 @@ export class CwProjectsList extends Component<void, IState> {
       const project = projects[id];
 
       return <li className="cw-projects-list--item-container" key={id}>
-        <Link className="cw-projects-list--item" to={`/projects/${id}`}>
-          <CwProjectItem project={project}/>
-        </Link>
+        <span className="cw-projects-list--item">
+          <CwProjectItem id={id} project={project}/>
+        </span>
       </li>;
     });
 

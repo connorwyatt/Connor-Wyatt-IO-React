@@ -3,8 +3,12 @@
 .cw-project-item {
   &--image {
     display: block;
-    margin: 0 auto;
+    margin: 0 auto $base-line-height;
     max-height: $base-line-height * 4;
     max-width: 100%;
+  }
+
+  &--link {
+
   }
 }

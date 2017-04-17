@@ -60,7 +60,9 @@ export class CwProject extends Component<IProps, IState> {
 
         <h2 className="cw-project--title">{project.name}</h2>
 
-        {project.imageUrl && <img className="cw-project--image" src={project.imageUrl}/>}
+        {project.imageUrl && <img className="cw-project--image"
+                                  src={project.imageUrl}
+                                  alt={'Image for ' + project.name}/>}
 
         <p>{project.description}</p>
 
