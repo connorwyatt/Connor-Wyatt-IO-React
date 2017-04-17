@@ -93,7 +93,16 @@ p {
 
 a {
   color: inherit;
+  outline: none;
   text-decoration: none;
+}
+
+button {
+  outline: none;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
 }
 
 ul {
