@@ -27,7 +27,7 @@ export class CwHeader extends Component<void, IState> {
     return <header className="cw-header">
       <div className="cw-header--container">
         <span className="cw-header--branding">
-          <Link to="/">
+          <Link className="cw-header--title-link" to="/">
             <h1 className="cw-header--title">
               <span className="cw-header--title__bold">Connor</span> Wyatt IO
             </h1>

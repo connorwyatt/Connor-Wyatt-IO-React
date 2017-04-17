@@ -1,9 +1,11 @@
 import firebase from 'firebase';
 import React, {Component, ReactElement} from 'react';
 import {RouteComponentProps} from 'react-router';
+import {Link} from 'react-router-dom';
 import 'rxjs/add/observable/fromPromise';
 import {Observable} from 'rxjs/Observable';
 import {IProject} from '../interfaces/IProject';
+import {CwIcon} from './CwIcon';
 import {CwLoading} from './CwLoading';
 import './CwProject.scss';
 
@@ -36,10 +38,34 @@ export class CwProject extends Component<IProps, IState> {
   }
 
   public render(): ReactElement<HTMLElement> {
+    let content: ReactElement<HTMLElement>;
+
     if (this.state.project === null) {
-      return <div className="cw-project--loading"><CwLoading/></div>;
+      content = <div className="cw-project--loading"><CwLoading/></div>;
     } else {
-      return <div>{this.state.project.name}</div>;
+      content = this.renderProject();
     }
+
+    return <div className="cw-project">{content}</div>;
+  }
+
+  private renderProject(): ReactElement<HTMLElement> {
+    const project = this.state.project as IProject;
+
+    return <div className="cw-project--grid">
+      <div className="cw-project--grid-item">
+        <Link className="cw-project--back-link" to="/projects">
+          <CwIcon className="cw-project--back-icon" icon="arrow"/>
+        </Link>
+
+        <h2 className="cw-project--title">{project.name}</h2>
+
+        {project.imageUrl && <img className="cw-project--image" src={project.imageUrl}/>}
+
+        <p>{project.description}</p>
+
+        {project.link && <p><a href={project.link}>See more</a></p>}
+      </div>
+    </div>;
   }
 }

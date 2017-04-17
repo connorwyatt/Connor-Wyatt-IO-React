@@ -35,6 +35,7 @@ html {
 body {
   background-color: $color-grey-light;
   box-sizing: border-box;
+  color: $color-text;
   display: flex;
   flex-direction: column;
   font-family: 'Raleway', sans-serif;
@@ -92,9 +93,15 @@ p {
 }
 
 a {
-  color: inherit;
+  color: $color-accent-dark;
   outline: none;
-  text-decoration: none;
+  transition: standard-transition(color);
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $color-accent;
+  }
 }
 
 button {

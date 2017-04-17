@@ -6,4 +6,53 @@
     margin: ($base-line-height * 2) auto;
     width: $base-line-height * 3;
   }
+
+  &--grid {
+    @include grid();
+    padding-top: $base-line-height;
+
+    @media #{$mediaQuery-ld} {
+      padding-left: $page-side-padding-ld;
+      padding-right: $page-side-padding-ld;
+    }
+  }
+
+  &--grid-item {
+    @include grid-item(12);
+    @include panel;
+    margin-bottom: $base-line-height;
+  }
+
+  &--back-link {
+    color: $color-secondary-text;
+    display: inline-block;
+    height: $base-line-height;
+    margin-right: $base-font-size;
+    transition: standard-transition(color);
+    width: $base-line-height;
+    vertical-align: middle;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $color-primary;
+    }
+  }
+
+  &--back-icon {
+    display: block;
+    transform: rotate(180deg);
+  }
+
+  &--title {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &--image {
+    display: block;
+    margin: 0 auto;
+    max-height: $base-line-height * 8;
+    max-width: 100%;
+  }
 }

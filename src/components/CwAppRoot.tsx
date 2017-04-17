@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {ArrowIcon} from '../assets/icons/arrow.icon';
 import {MenuIcon} from '../assets/icons/menu.icon';
 import {CwIconRegistryService} from '../services/CwIconRegistryService';
 import {CwAboutMe} from './CwAboutMe';
@@ -15,6 +16,7 @@ export class CwAppRoot extends Component<void, void> {
   public componentWillMount(): void {
     const iconService = CwIconRegistryService.getInstance();
 
+    iconService.setIcon('arrow', ArrowIcon);
     iconService.setIcon('menu', MenuIcon);
   }
 
