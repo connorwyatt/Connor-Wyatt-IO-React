@@ -14,6 +14,7 @@ export class CwHeader extends Component<void, IState> {
     this.state = {isMenuOpen: false};
 
     this.toggleMenuOpen = this.toggleMenuOpen.bind(this);
+    this.closeMenu = this.closeMenu.bind(this);
   }
 
   public render(): ReactElement<HTMLElement> {
@@ -37,11 +38,13 @@ export class CwHeader extends Component<void, IState> {
 
         <button
           className="cw-header--dropdown-button"
-          onClick={e => this.toggleMenuOpen()}>
+          onClick={() => this.toggleMenuOpen()}>
           <CwIcon className="cw-header--dropdown-icon" icon="menu"/>
         </button>
 
         {this.state.isMenuOpen && this.renderNav('dropdown', links)}
+
+        {this.state.isMenuOpen && this.renderDropdownBackdrop()}
       </div>
     </header>;
   }
@@ -51,6 +54,7 @@ export class CwHeader extends Component<void, IState> {
       return <NavLink to={link.url}
                       className={`cw-header--${type}-link`}
                       activeClassName={`cw-header--${type}-link__active`}
+                      onClick={() => this.closeMenu()}
                       key={link.url}>{link.name}</NavLink>;
     });
 
@@ -59,7 +63,16 @@ export class CwHeader extends Component<void, IState> {
     </nav>;
   }
 
+  private renderDropdownBackdrop(): ReactElement<HTMLElement> {
+    return <div className="cw-header--dropdown-backdrop"
+                onClick={() => this.closeMenu()}/>;
+  }
+
   private toggleMenuOpen(): void {
     this.setState(({isMenuOpen}: IState) => ({isMenuOpen: !isMenuOpen}));
+  }
+
+  private closeMenu(): void {
+    this.setState({isMenuOpen: false});
   }
 }
