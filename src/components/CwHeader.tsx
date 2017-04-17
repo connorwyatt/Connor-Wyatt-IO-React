@@ -1,13 +1,19 @@
 import React, {Component, ReactElement} from 'react';
 import {Link, NavLink} from 'react-router-dom';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/take';
+import {Observable} from 'rxjs/Observable';
 import './CwHeader.scss';
 import {CwIcon} from './CwIcon';
+import {Subscription} from 'rxjs/Subscription';
 
 interface IState {
   isMenuOpen: boolean;
 }
 
 export class CwHeader extends Component<void, IState> {
+  private resizeSubscription: Nullable<Subscription> = null;
+
   public constructor() {
     super();
 
@@ -69,10 +75,20 @@ export class CwHeader extends Component<void, IState> {
   }
 
   private toggleMenuOpen(): void {
+    if (!this.state.isMenuOpen) {
+      this.resizeSubscription = Observable.fromEvent(window, 'resize')
+        .take(1)
+        .subscribe(() => this.closeMenu());
+    }
+
     this.setState(({isMenuOpen}: IState) => ({isMenuOpen: !isMenuOpen}));
   }
 
   private closeMenu(): void {
+    if (this.resizeSubscription !== null) {
+      this.resizeSubscription.unsubscribe();
+    }
+
     this.setState({isMenuOpen: false});
   }
 }
