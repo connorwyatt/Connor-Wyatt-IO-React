@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {MenuIcon} from '../assets/icons/menu.icon';
+import {CwIconRegistryService} from '../services/CwIconRegistryService';
 import {CwAboutMe} from './CwAboutMe';
 import './CwAppRoot.scss';
 import {CwContactMe} from './CwContactMe';
@@ -10,7 +12,13 @@ import {CwProject} from './CwProject';
 import {CwProjectsList} from './CwProjectsList';
 
 export class CwAppRoot extends Component<void, void> {
-  render() {
+  public componentWillMount(): void {
+    const iconService = CwIconRegistryService.getInstance();
+
+    iconService.setIcon('menu', MenuIcon);
+  }
+
+  public render() {
     return <Router>
       <div>
         <span className="cw-app-root--header"><CwHeader/></span>
