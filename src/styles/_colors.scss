@@ -5,6 +5,7 @@ $color-white: #fff;
 
 $color-primary-name: 'cyan';
 $color-secondary-name: 'cyan';
+$color-accent-name: 'amber';
 $color-success-name: 'green';
 $color-error-name: 'red';
 
@@ -15,6 +16,10 @@ $color-primary-light: material-design-color($color-primary-name, '300');
 $color-secondary: material-design-color($color-secondary-name, 'a200');
 $color-secondary-dark: material-design-color($color-secondary-name, 'a100');
 $color-secondary-light: material-design-color($color-secondary-name, 'a400');
+
+$color-accent: material-design-color($color-accent-name, '500');
+$color-accent-dark: material-design-color($color-accent-name, '700');
+$color-accent-light: material-design-color($color-accent-name, '300');
 
 $color-success: material-design-color($color-success-name, '500');
 $color-success-dark: material-design-color($color-success-name, '700');

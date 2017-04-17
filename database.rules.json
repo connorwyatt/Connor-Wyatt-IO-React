@@ -7,6 +7,10 @@
     "rawMessages": {
       ".read": "auth != null",
       ".write": true
+    },
+    "projects": {
+      ".read": true,
+      ".write": false
     }
   }
 }
