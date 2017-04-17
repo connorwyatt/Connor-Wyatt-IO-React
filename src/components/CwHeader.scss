@@ -75,6 +75,17 @@
     }
   }
 
+  &--dropdown-button {
+    width: $base-line-height * 2;
+  }
+
+  &--dropdown-icon {
+    display: block;
+    height: $base-font-size;
+    margin: 0 auto;
+    width: $base-font-size;
+  }
+
   &--dropdown-links {
     background-color: $color-primary;
     border-bottom: 1px solid $color-secondary;

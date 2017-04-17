@@ -1,6 +1,7 @@
 import React, {Component, ReactElement} from 'react';
 import {Link, NavLink} from 'react-router-dom';
 import './CwHeader.scss';
+import {CwIcon} from './CwIcon';
 
 interface IState {
   isMenuOpen: boolean;
@@ -36,7 +37,7 @@ export class CwHeader extends Component<void, IState> {
         <button
           className="cw-header--dropdown-button"
           onClick={e => this.toggleMenuOpen()}>
-          Menu
+          <CwIcon className="cw-header--dropdown-icon" icon="menu"/>
         </button>
 
         {this.state.isMenuOpen && this.renderNav('dropdown', links)}
