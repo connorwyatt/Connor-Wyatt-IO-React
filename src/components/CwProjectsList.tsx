@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 import React, {Component, ReactElement} from 'react';
-import {Link} from 'react-router-dom';
 import 'rxjs/add/observable/fromPromise';
 import {Observable} from 'rxjs/Observable';
 import {IProject} from '../interfaces';

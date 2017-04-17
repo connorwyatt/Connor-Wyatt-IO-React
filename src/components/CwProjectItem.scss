@@ -4,11 +4,7 @@
   &--image {
     display: block;
     margin: 0 auto $base-line-height;
-    max-height: $base-line-height * 4;
+    max-height: $base-line-height * 8;
     max-width: 100%;
-  }
-
-  &--link {
-
   }
 }
